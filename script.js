@@ -16,14 +16,16 @@ textareaEl.addEventListener('input', function () {
     textareaEl.value = textareaEl.value.replace('<script>', '');
   }
 
-  //determine new numbers;
-  let words = textareaEl.value.replaceAll('\n', ' ').trim().split(' ');
+  function stringToWords(string) {
+    let words = textareaEl.value.replaceAll('\n', ' ').trim().split(' ');
 
-  if (words.length === 1 && words.includes('')) {
-    words = [];
+    if (words.length === 1 && words.includes('')) {
+      words = [];
+      let numberOfWords = words.length;
+    }
+    return words;
   }
-  let numberOfWords = words.length;
-  console.log(words);
+  //determine new numbers;
 
   const numberOfCharacters = textareaEl.value.length;
   const tiktokCharactersLeft = tiktokCharactersLimit - numberOfCharacters;
@@ -57,4 +59,11 @@ textareaEl.addEventListener('input', function () {
 //crear funcion que calcule words (stringToWords)  argumento (string) retorna un array de strings
 //funtion stringToWords (string)
 //incluir dentro de la funcion el if statement (words.lenght ==)
-//anadir get line counting (contador para lineas, duplicar caracteres) ahora solo2 caracteres
+//anadir get line counting (contador para lineas, duplicar caracteres) ahora solo2
+
+// function stringToWords(string) {
+//   let totalPalabras = string.split(' ');
+
+//   return totalPalabras;
+// }
+// console.log(stringToWords('Hola como estas'));
