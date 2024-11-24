@@ -3,6 +3,7 @@ const characterNumberEl = document.querySelector('.stat__number--characters');
 const tiktokNumberEl = document.querySelector('.stat__number--tiktok');
 const instagramNumberEl = document.querySelector('.stat__number--instagram');
 const wordsNumberEl = document.querySelector('.stat__number--words');
+//const linesNumberEl = document.querySelector('.stat__number--lineCounter');
 
 const tiktokCharactersLimit = tiktokNumberEl.textContent;
 console.log(tiktokCharactersLimit);
@@ -16,15 +17,31 @@ textareaEl.addEventListener('input', function () {
     textareaEl.value = textareaEl.value.replace('<script>', '');
   }
 
-  function stringToWords(string) {
+  function stringToWords() {
     let words = textareaEl.value.replaceAll('\n', ' ').trim().split(' ');
 
     if (words.length === 1 && words.includes('')) {
       words = [];
-      let numberOfWords = words.length;
     }
-    return words;
+    let numberOfWords = words.length;
+    wordsNumberEl.textContent = numberOfWords;
+
+    return numberOfWords;
   }
+  stringToWords();
+
+  //determine line counter:
+  // function countLines() {
+  //   let text = textareaEl.value;
+  //   let lines = text.split('\n');
+  //   let numberOfLines = lines.length;
+
+  //   linesNumberEl.textContent = numberOfLines;
+
+  //   return numberOfLines;
+  // }
+  // countLines();
+
   //determine new numbers;
 
   const numberOfCharacters = textareaEl.value.length;
@@ -45,7 +62,6 @@ textareaEl.addEventListener('input', function () {
 
     //set new numbers
 
-    wordsNumberEl.textContent = numberOfWords;
     characterNumberEl.textContent = numberOfCharacters;
     tiktokNumberEl.textContent = tiktokCharactersLeft;
     instagramNumberEl.textContent = instagramCharactersLeft;
